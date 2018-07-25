@@ -1,5 +1,5 @@
 stages:
-  - prep
+  - pre-build
   - build
   #- test
   - release
@@ -13,19 +13,27 @@ variables:
   JENKINS_USER: admin
   JENKINS_USER_PASSWORD: admin
 
+volumes:
+  name: build-config
+  path: /ansible/playbooks
+  mode: rw
+  persist: true
 
 prepare jenking init config:
-  stage: prep
+  stage: pre-build
   image:
     name: aemdesign/ansible-playbook:latest
     entrypoint: [""]
+  volumes: ["/tmp/build-config:/build-config:z"]
   script:
     - jinja2 templates/init-create-user.groovy.j2 -D jenkins_admin_password=$JENKINS_USER -D jenkins_admin_username=$JENKINS_USER_PASSWORD > init-create-user.groovy
 
 
 build docker image:
   stage: build
-  image: docker:stable
+  image:
+    name: docker:stable
+    volumes: ["/tmp/build-config:/build-config:ro"]
   services:
     - docker:dind
 
