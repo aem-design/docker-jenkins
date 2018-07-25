@@ -1,8 +1,7 @@
 image: docker:stable
 services:
 - docker:dind
-- name: aemdesign/ansible-playbook:latest
-  entrypoint: ""
+- aemdesign/ansible-playbook:latest entrypoint=""
 
 stages:
 - build
