@@ -24,7 +24,7 @@ prepare jenking init config:
     paths:
       - build-config
   script:
-    - mkdir build-config
+    - mkdir -p build-config
     - jinja2 templates/init-create-user.groovy.j2 -D jenkins_admin_password=$JENKINS_USER -D jenkins_admin_username=$JENKINS_USER_PASSWORD > build-config/init-create-user.groovy
 
 build docker image:
