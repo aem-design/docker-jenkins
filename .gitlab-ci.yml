@@ -13,9 +13,6 @@ variables:
   JENKINS_USER: admin
   JENKINS_USER_PASSWORD: admin
 
-before_script:
-  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-
 
 prepare jenking init config:
   stage: prep
@@ -31,6 +28,9 @@ build docker image:
   image: docker:stable
   services:
     - docker:dind
+
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
 
   script:
     - docker build --pull -t "$CONTAINER_TEST_IMAGE" .
@@ -53,6 +53,10 @@ release image:
   image: docker:stable
   services:
     - docker:dind
+
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+
   script:
     - docker pull "$CONTAINER_TEST_IMAGE"
     - docker tag "$CONTAINER_TEST_IMAGE" "$CONTAINER_RELEASE_IMAGE"
