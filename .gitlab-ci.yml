@@ -23,6 +23,7 @@ prepare jenking init config:
     key: jenkins-build-config
     paths:
       - build-config
+    policy: push
   script:
     - mkdir -p build-config
     - jinja2 templates/init-create-user.groovy.j2 -D jenkins_admin_password=$JENKINS_USER -D jenkins_admin_username=$JENKINS_USER_PASSWORD > build-config/init-create-user.groovy
