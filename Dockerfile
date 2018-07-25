@@ -20,7 +20,8 @@ USER root
 
 COPY plugins.txt /usr/share/$JENKINS_USER/plugins.txt
 COPY jenkins.install.UpgradeWizard.state /var/lib/$JENKINS_USER/
-COPY init-config.groovy /usr/share/$JENKINS_USER/ref/init.groovy.d/
+COPY tcp-slave-agent-port.groovy /usr/share/$JENKINS_USER/ref/init.groovy.d/
+COPY init-create-user.groovy /usr/share/$JENKINS_USER/ref/init.groovy.d/
 COPY jenkins.CLI.xml $JENKINS_HOME
 
 #add ssl
