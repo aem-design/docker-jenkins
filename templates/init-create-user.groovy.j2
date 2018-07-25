@@ -12,17 +12,17 @@ println "--> Running Server First Start Initial Config Script"
 
 println "--> Script Location: " + currentScript
 
-def secret = Secret.fromString("admin")
+def secret = Secret.fromString("{{ jenkins_admin_password }}")
 println(secret.getEncryptedValue())
 
-println "--> Creating new admin"
+println "--> Creating new admin '{{ jenkins_admin_username }}'"
 
 def hudsonRealm = new HudsonPrivateSecurityRealm(false)
-hudsonRealm.createAccount("admin", "admin")
+hudsonRealm.createAccount("{{ jenkins_admin_username }}", "{{ jenkins_admin_password }}")
 instance.setSecurityRealm(hudsonRealm)
 instance.save()
 
-println "--> User created 'admin'"
+println "--> User created '{{ jenkins_admin_username }}'"
 
 println "--> Updating Security Strategy"
 

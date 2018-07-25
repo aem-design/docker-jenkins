@@ -1,6 +1,8 @@
 image: docker:stable
 services:
 - docker:dind
+- name: aemdesign/ansible-playbook:latest
+  entrypoint: ""
 
 stages:
 - build
@@ -13,6 +15,8 @@ variables:
   DOCKER_DRIVER: overlay2
   CONTAINER_TEST_IMAGE: $CI_REGISTRY_IMAGE/jenkins:$CI_COMMIT_REF_NAME
   CONTAINER_RELEASE_IMAGE: $CI_REGISTRY_IMAGE/jenkins:latest
+  JENKINS_USER: admin
+  JENKINS_USER_PASSWORD: admin
 
 before_script:
   - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
@@ -21,6 +25,7 @@ before_script:
 build:
   stage: build
   script:
+    - jinja2 templates/init-create-user.groovy.j2 -D jenkins_admin_password=$JENKINS_USER -D jenkins_admin_username=$JENKINS_USER_PASSWORD > init-create-user.groovy
     - docker build --pull -t "$CONTAINER_TEST_IMAGE" .
     - docker push "$CONTAINER_TEST_IMAGE"
 #
