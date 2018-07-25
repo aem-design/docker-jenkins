@@ -13,11 +13,6 @@ variables:
   JENKINS_USER: admin
   JENKINS_USER_PASSWORD: admin
 
-volumes:
-  name: build-config
-  path: /ansible/playbooks
-  mode: rw
-  persist: true
 
 prepare jenking init config:
   stage: pre-build
