@@ -19,16 +19,18 @@ prepare jenking init config:
   image:
     name: aemdesign/ansible-playbook:latest
     entrypoint: [""]
+    volumes: ["/tmp/build-config:/build-config:z"]
   script:
     - pwd
     - ls /
-    - jinja2 templates/init-create-user.groovy.j2 -D jenkins_admin_password=$JENKINS_USER -D jenkins_admin_username=$JENKINS_USER_PASSWORD > init-create-user.groovy
+    - jinja2 templates/init-create-user.groovy.j2 -D jenkins_admin_password=$JENKINS_USER -D jenkins_admin_username=$JENKINS_USER_PASSWORD > /build-config/init-create-user.groovy
 
 
 build docker image:
   stage: build
   image:
     name: docker:stable
+    volumes: ["/tmp/build-config:/build-config:z"]
   services:
     - docker:dind
 
