@@ -19,23 +19,29 @@ prepare jenking init config:
   image:
     name: aemdesign/ansible-playbook:latest
     entrypoint: [""]
-    volumes: ["/tmp/build-config:/build-config:z"]
+  cache:
+    key: build-config
+    paths:
+      - build-config
   script:
-    - pwd
-    - ls /
-    - jinja2 templates/init-create-user.groovy.j2 -D jenkins_admin_password=$JENKINS_USER -D jenkins_admin_username=$JENKINS_USER_PASSWORD > /build-config/init-create-user.groovy
-
+    - mkdir build-config
+    - jinja2 templates/init-create-user.groovy.j2 -D jenkins_admin_password=$JENKINS_USER -D jenkins_admin_username=$JENKINS_USER_PASSWORD > build-config/init-create-user.groovy
 
 build docker image:
   stage: build
   image:
     name: docker:stable
-    volumes: ["/tmp/build-config:/build-config:z"]
   services:
     - docker:dind
 
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+
+  cache:
+    key: build-config
+    paths:
+      - build-config
+    policy: pull
 
   script:
     - docker build --pull -t "$CONTAINER_TEST_IMAGE" .
