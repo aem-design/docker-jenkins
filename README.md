@@ -1,5 +1,7 @@
 ## CentOS 7 with Jenkins
 
+[![pipeline status](https://gitlab.com/aem.design/jenkins/badges/master/pipeline.svg)](https://gitlab.com/aem.design/jenkins/commits/master)
+
 This is docker image based on [aemdesign/jenkins-base](https://hub.docker.com/r/aemdesign/jenkins-base/) with Jenkins Plugins Installed
 
 One image for Jenkins Master, Slave and build agent
