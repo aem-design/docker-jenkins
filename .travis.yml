@@ -13,11 +13,11 @@ before_install:
   - echo IMAGE_VERSION=$IMAGE_VERSION
   - echo TEST_COMMAND=$TEST_COMMAND
   - echo TEST_COMMAND_VERIFY=$TEST_COMMAND_VERIFY
-  - mkdir build-config
-  - if [[ $TRAVIS_BRANCH == "master" ]]; then docker run --rm -v $(pwd)/build-config:/data/build-config -v $(pwd)/templates:/data/templates --entrypoint="" aemdesign/ansible-playbook:latest bash -c "jinja2 /data/templates/init-create-user.groovy.j2 -D jenkins_admin_password=$JENKINS_USER -D jenkins_admin_username=$JENKINS_USER_PASSWORD > /data/build-config/init-create-user.groovy"; fi
 
 #build and test
 install:
+  - mkdir ./build-config
+  - if [[ $TRAVIS_BRANCH == "master" ]]; then docker run --rm -v $(pwd)/build-config:/data/build-config -v $(pwd)/templates:/data/templates -e JENKINS_USER=$JENKINS_USER -e JENKINS_USER_PASSWORD=$JENKINS_USER_PASSWORD --entrypoint="" aemdesign/ansible-playbook:latest bash -c "jinja2 /data/templates/init-create-user.groovy.j2 -D jenkins_admin_password=$JENKINS_USER -D jenkins_admin_username=$JENKINS_USER_PASSWORD > /data/build-config/init-create-user.groovy"; fi
   - docker build --pull -t $IMAGE:$IMAGE_VERSION .
   - docker tag $IMAGE:$IMAGE_VERSION $IMAGE:latest
   - export CONTAINER_COMMAND="docker run $IMAGE $TEST_COMMAND"
