@@ -1,6 +1,13 @@
 ## CentOS 7 with Jenkins
 
-[![pipeline status](https://gitlab.com/aem.design/jenkins/badges/master/pipeline.svg)](https://gitlab.com/aem.design/jenkins/commits/master)
+[![build_status](https://travis-ci.org/aem-design/jenkins.svg?branch=master)](https://travis-ci.org/aem-design/jenkins) 
+[![github license](https://img.shields.io/github/license/aem-design/jenkins)](https://github.com/aem-design/jenkins) 
+[![github issues](https://img.shields.io/github/issues/aem-design/jenkins)](https://github.com/aem-design/jenkins) 
+[![github last commit](https://img.shields.io/github/last-commit/aem-design/jenkins)](https://github.com/aem-design/jenkins) 
+[![github repo size](https://img.shields.io/github/repo-size/aem-design/jenkins)](https://github.com/aem-design/jenkins) 
+[![docker stars](https://img.shields.io/docker/stars/aemdesign/jenkins)](https://hub.docker.com/r/aemdesign/jenkins) 
+[![docker pulls](https://img.shields.io/docker/pulls/aemdesign/jenkins)](https://hub.docker.com/r/aemdesign/jenkins) 
+[![github release](https://img.shields.io/github/release/aem-design/jenkins)](https://github.com/aem-design/jenkins)
 
 This is docker image based on [aemdesign/jenkins-base](https://hub.docker.com/r/aemdesign/jenkins-base/) with Jenkins Plugins Installed
 

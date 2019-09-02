@@ -2,7 +2,14 @@ FROM        aemdesign/jenkins-base:latest
 
 MAINTAINER  devops <devops@aem.design>
 
-LABEL       container.description="extended Jenkins image to allow configuration during image build"
+LABEL   os="centos" \
+        docker.source="https://hub.docker.com/_/jenkins/" \
+        docker.dockerfile="https://github.com/jenkinsci/docker/blob/master/Dockerfile" \
+        container.description="extended Jenkins image to allow configuration during image build" \
+        version="1.0.0" \
+        imagename="jenkins-base" \
+        test.command=" java -version 2>&1 | grep 'java version' | sed -e 's/.*java version "\(.*\)".*/\1/'" \
+        test.command.verify="11.0.4"
 
 ENV JENKINS_SLAVE_COUNT=2 \
     JENKINS_HOME="/var/jenkins_home" \
