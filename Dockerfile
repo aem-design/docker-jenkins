@@ -7,7 +7,7 @@ LABEL   os="centos" \
         docker.dockerfile="https://github.com/jenkinsci/docker/blob/master/Dockerfile" \
         container.description="extended Jenkins image to allow configuration during image build" \
         version="1.0.0" \
-        imagename="jenkins-base" \
+        imagename="jenkins" \
         test.command=" java -version 2>&1 | grep 'java version' | sed -e 's/.*java version "\(.*\)".*/\1/'" \
         test.command.verify="1.8"
 
