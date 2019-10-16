@@ -37,7 +37,8 @@ COPY jenkins.CLI.xml $JENKINS_HOME
 #ENV JENKINS_OPTS --httpPort=-1 --httpsPort=8083 --httpsCertificate=/var/lib/$JENKINS_USER/cert --httpsPrivateKey=/var/lib/$JENKINS_USER/pk
 #EXPOSE 8083
 
-RUN install-plugins.sh $(while read line; do echo -n " $line"; done < /usr/share/$JENKINS_USER/plugins.txt)
+#RUN install-plugins.sh $(while read line; do echo -n " $line"; done < /usr/share/$JENKINS_USER/plugins.txt)
+RUN xargs /usr/local/bin/plugins.sh /usr/share/$JENKINS_USER/plugins.txt
 
 
 EXPOSE 22
