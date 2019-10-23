@@ -31,6 +31,11 @@ COPY tcp-slave-agent-port.groovy /usr/share/$JENKINS_USER/ref/init.groovy.d/
 COPY build-config/init-create-user.groovy /usr/share/$JENKINS_USER/ref/init.groovy.d/
 COPY jenkins.CLI.xml $JENKINS_HOME
 
+COPY aemdesign-jenkins /var/jenkins_conf
+ENV CASC_JENKINS_CONFIG /var/jenkins_conf
+
+COPY vault-cli-3.4.0 /usr/share
+ENV PATH="/usr/share/vault-cli-3.4.0/bin:${PATH}"
 #add ssl
 #COPY https.pem /var/lib/$JENKINS_USER/cert
 #COPY https.key /var/lib/$JENKINS_USER/pk
