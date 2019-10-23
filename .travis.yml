@@ -8,7 +8,6 @@ services:
 before_install:
   - "source <(curl -sL https://github.com/aem-design/aemdesign-docker/releases/latest/download/get_config.sh)"
   - "source <(curl -sL https://github.com/aem-design/aemdesign-docker/releases/latest/download/get_version.sh)"
-  - sudo yum install unzip maven
 
 #build and test
 install:
