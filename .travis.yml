@@ -13,11 +13,11 @@ before_install:
 install:
   - echo CREATE JENKINS CONFIG
   - mvn dependency:copy-dependencies -DoutputDirectory=.
-  - unzip vault-cli-3.4.0-bin.zip
+  - unzip vault-cli-$VAULT_VERSION-bin.zip
   - git clone https://github.com/aem-design/aemdesign-jenkins.git
   - mkdir ./build-config
   - docker run --rm -v $(pwd)/build-config:/data/build-config -v $(pwd)/templates:/data/templates -e JENKINS_USER=$JENKINS_USER -e JENKINS_USER_PASSWORD=$JENKINS_USER_PASSWORD --entrypoint="" aemdesign/ansible-playbook:latest bash -c "jinja2 /data/templates/init-create-user.groovy.j2 -D jenkins_admin_password=$JENKINS_USER_PASSWORD -D jenkins_admin_username=$JENKINS_USER > /data/build-config/init-create-user.groovy"
-  - docker build --pull -t $IMAGE:$IMAGE_VERSION .
+  - docker build --pull -t $IMAGE:$IMAGE_VERSION --build-arg VAULT_VERSION=${VAULT_VERSION} .
   - "source <(curl -sL https://github.com/aem-design/aemdesign-docker/releases/latest/download/container_verify.sh)"
   - docker images
 

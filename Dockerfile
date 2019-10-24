@@ -34,8 +34,8 @@ COPY jenkins.CLI.xml $JENKINS_HOME
 COPY aemdesign-jenkins /var/jenkins_conf
 ENV CASC_JENKINS_CONFIG /var/jenkins_conf
 
-COPY vault-cli-3.4.0 /usr/share
-ENV PATH="/usr/share/vault-cli-3.4.0/bin:${PATH}"
+COPY vault-cli-$VAULT_VERSION /usr/share
+ENV PATH="/usr/share/vault-cli-$VAULT_VERSION/bin:${PATH}"
 #add ssl
 #COPY https.pem /var/lib/$JENKINS_USER/cert
 #COPY https.key /var/lib/$JENKINS_USER/pk

@@ -18,7 +18,7 @@
             <artifactId>vault-cli</artifactId>
             <classifier>bin</classifier>
             <type>zip</type>
-            <version>3.4.0</version>
+            <version>${VAULT_VERSION}</version>
             <exclusions>
                 <exclusion>
                     <groupId>*</groupId>
