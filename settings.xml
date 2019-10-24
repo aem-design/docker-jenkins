@@ -22,7 +22,7 @@
                 <repository>
                     <id>github</id>
                     <name>GitHub OWNER Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/${ORGANISATION_NAME}/jackrabbit-filevault-builder</url>
+                    <url>https://maven.pkg.github.com/rickyaut/jackrabbit-filevault-builder</url>
                 </repository>
             </repositories>
         </profile>
