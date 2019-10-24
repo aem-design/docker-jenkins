@@ -16,8 +16,8 @@
         <dependency>
             <groupId>org.apache.jackrabbit.vault</groupId>
             <artifactId>vault-cli</artifactId>
-            <classifier>bin</classifier>
-            <type>zip</type>
+<!--            <classifier>bin</classifier>-->
+<!--            <type>zip</type>-->
             <version>${VAULT_VERSION}</version>
             <exclusions>
                 <exclusion>
