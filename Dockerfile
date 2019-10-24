@@ -11,6 +11,8 @@ LABEL   os="centos" \
         test.command=" java -version 2>&1 | grep 'java version' | sed -e 's/.*java version "\(.*\)".*/\1/'" \
         test.command.verify="1.8"
 
+ARG VAULT_VERSION="3.2.0"
+
 ENV JENKINS_SLAVE_COUNT=2 \
     JENKINS_HOME="/var/jenkins_home" \
     JENKINS_SLAVE_AGENT_PORT=50000 \
