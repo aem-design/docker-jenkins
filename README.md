@@ -15,22 +15,32 @@ One image for Jenkins Master, Slave and build agent
 
 ### Included Packages
 
-Following is the list of packages included
+Please refer to included packages specified by aemdesign/jenkins-base
 
-* jenkins               - for managing pipelines
+### Environment Variables
+
+Please refer to environment variable specified by aemdesign/jenkins-base
+
+### Volumes
+
+Following volumes are exposed
+
+| Path | Notes  |
+| ---  | ---    |
+| "/var/jenkins_home" | Jenkins home directory|
+| "/var/jenkins_conf" | Jenkins configuration directory |
+| "/var/jenkins_tools" | Jenkins tools directory|
+
+### Ports
+
+Please refer to available ports specified by aemdesign/jenkins-base
 
 ### Included Plugins
 
-Following is the list of packages included
-
-* blueocean             - for better pipeline presentation
-* gitlab                - for integrating with gitlab
-* sonar                 - for integrating with sonar
-* docker                - for managing docker
-* pipeline              - for providing pipeline functionality
+In addition to all plugins installed by aemdesign/jenkins-base, extra plugins should be specified in plugins_extra.txt
 
 ### Usage
 
-> docker run -v jenkins_home:/var/jenkins_home -v $(pwd)/aendesign-jenkins/casc_configs:/var/jenkins_conf -v $(pwd)/aendesign-jenkins/tools:/var/jenkins_tools -p 8080:8080 aemdesign/jenkins-base
+> docker run -v jenkins_home:/var/jenkins_home -v $(pwd)/aemdesign-jenkins/casc_configs:/var/jenkins_conf -v $(pwd)/aemdesign-jenkins/tools:/var/jenkins_tools -p 8080:8080 aemdesign/jenkins-base
 
 and aemdesign-jenkins contains sample CASC configurations to run AEM, it can be cloned from https://github.com/aem-design/aemdesign-jenkins
