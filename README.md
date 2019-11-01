@@ -41,6 +41,6 @@ In addition to all plugins installed by aemdesign/jenkins-base, extra plugins sh
 
 ### Usage
 
-> docker run -v jenkins_home:/var/jenkins_home -v $(pwd)/aemdesign-jenkins/casc_configs:/var/jenkins_conf -v $(pwd)/aemdesign-jenkins/tools:/var/jenkins_tools -p 8080:8080 aemdesign/jenkins-base
+> docker run -v jenkins_home:/var/jenkins_home -v $(pwd)/aemdesign-jenkins/casc_configs:/var/jenkins_conf -v $(pwd)/aemdesign-jenkins/tools:/var/jenkins_tools -p 8080:8080 aemdesign/jenkins
 
 and aemdesign-jenkins contains sample CASC configurations to run AEM, it can be cloned from https://github.com/aem-design/aemdesign-jenkins
