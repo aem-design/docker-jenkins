@@ -13,7 +13,6 @@ LABEL   os="centos" \
 
 # This is not working
 ENV PATH="/var/jenkins_tools/vault-cli-3.2.9-SNAPSHOT/bin:${PATH}"
-ENV TEST_VAR="LIU"
 
 COPY jenkins.install.UpgradeWizard.state /var/lib/$JENKINS_USER/
 COPY tcp-slave-agent-port.groovy /usr/share/$JENKINS_USER/ref/init.groovy.d/
